@@ -139,6 +139,10 @@ const App = () => {
     console.log("ref values", inputRef.current.getValues());
   };
 
+  const handleDelete = (id: string) => {
+    setState((prevArray) => prevArray.filter((item) => item._id !== id));
+  };
+
   const handleSubmit = async () => {
     const isValidated = handleValidation();
 
@@ -178,7 +182,7 @@ const App = () => {
       <ListItem
         data={state}
         onToggleModal={toggleModal}
-        onHandleEdit={handleEdit}
+        onHandleDelete={handleDelete}
         ref={inputRef}
       />
       <button onClick={toggleModal} className="modal-btn">

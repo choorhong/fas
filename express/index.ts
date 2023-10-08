@@ -98,6 +98,24 @@ app.post(
   }
 );
 
+app.delete(
+  "/schedule/:id",
+  async (req: express.Request, res: express.Response) => {
+    const { id } = req.params;
+    console.log("id", id);
+    if (!id) return;
+
+    try {
+      const r = await db
+        .collection("schedules")
+        .deleteOne({ _id: new ObjectId(id) });
+      res.status(200).json({ msg: "Successful request", result: r });
+    } catch (error) {
+      res.status(400).json({ msg: (error as unknown as Error).message });
+    }
+  }
+);
+
 app.post(
   "/users/update-credentials",
   async (req: express.Request, res: express.Response) => {

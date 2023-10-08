@@ -5,13 +5,13 @@ type ListItemPropsType = {
   children?: React.ReactNode;
   data?: Record<string, any>[];
   onToggleModal: () => void;
-  onHandleEdit: () => void;
+  onHandleDelete: (id: string) => void;
 };
 
 // Create a React component that displays a list of items retrieved from an API endpoint.
 const ListItem = React.forwardRef<any, ListItemPropsType>(
   (props: ListItemPropsType, ref) => {
-    const { data, onToggleModal, onHandleEdit } = props;
+    const { data, onHandleDelete } = props;
     const itemRef = useRef<any>();
 
     useImperativeHandle(
@@ -26,9 +26,17 @@ const ListItem = React.forwardRef<any, ListItemPropsType>(
       []
     );
 
-    const handleClick = (_item: Record<string, any>) => {
-      // onHandleEdit();
-      // onToggleModal();
+    const handleDelete = async (id: string) => {
+      try {
+        const response = await fetch(`http://localhost/schedule/${id}`, {
+          method: "DELETE",
+        });
+
+        if (!response.ok) return;
+        onHandleDelete(id);
+      } catch (error) {
+        console.error("error", (error as unknown as Error).message);
+      }
     };
 
     return (
@@ -39,11 +47,14 @@ const ListItem = React.forwardRef<any, ListItemPropsType>(
               ref={() => (itemRef.current = item)}
               key={item._id || index}
               className="grid-item"
-              onClick={() => {
-                handleClick(item);
-              }}
             >
               <pre>{JSON.stringify(item, null, 2)}</pre>
+              <button
+                className="delete-schedule-btn"
+                onClick={() => handleDelete(item._id)}
+              >
+                Delete schedule
+              </button>
             </div>
           );
         })}

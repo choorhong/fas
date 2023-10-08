@@ -104,13 +104,19 @@
 
 .grid-item {
   border: solid 1px #373737;
-  /* background-color: #373737; */
+  position: relative;
   padding: 0.25rem;
   border-radius: 0.5rem;
   margin-bottom: 0.5rem;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .grid-item:hover {
   background-color: #373737;
+}
+
+.delete-schedule-btn {
+  top: 1rem;
+  right: 2rem;
+  position: absolute;
 }
