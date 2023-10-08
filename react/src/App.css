@@ -1,0 +1,90 @@
+#root {
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+  padding: 1rem;
+  /* text-align: center; */
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow-wrap: anywhere;
+  gap: 0.5rem;
+}
+
+fieldset {
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+legend {
+  padding: 0.5rem;
+}
+
+label {
+  display: block;
+}
+
+label::after {
+  content: ":";
+}
+
+input {
+  height: 1.5rem;
+  width: -webkit-fill-available;
+}
+
+input[type="radio"] {
+  width: 1.5rem;
+}
+
+.grid-item {
+  border: solid 1px #373737;
+  /* background-color: #373737; */
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+.grid-item:hover {
+  background-color: #373737;
+}
+
+.radio-label {
+  display: inline;
+  margin: 0 0.5rem;
+  vertical-align: super;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
