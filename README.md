@@ -1,1 +1,1 @@
-# React + TypeScript + Vite
+# MERN with Typescript support + Vite
